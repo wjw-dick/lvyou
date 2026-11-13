@@ -1,0 +1,14 @@
+.status-card { background: linear-gradient(135deg, #1f6feb, #38bdf8); color: #fff; }
+.status-card .muted { color: #e0f2fe; }
+.status { font-size: 40rpx; font-weight: 700; margin-bottom: 8rpx; }
+.qr-box { margin-top: 20rpx; text-align: center; padding: 24rpx; background: #fafcff; border: 1rpx dashed #dcdfe6; border-radius: 16rpx; }
+.qr-lines { display: flex; flex-direction: column; gap: 8rpx; padding: 20rpx; background: #fff; border-radius: 12rpx; }
+.qr-line { height: 8rpx; background: #0f172a; }
+.qr-code { margin-top: 12rpx; font-size: 26rpx; letter-spacing: 1rpx; }
+.tourist-row { display: flex; justify-content: space-between; align-items: center; padding: 12rpx 0; border-top: 1rpx dashed #ebeef5; font-size: 26rpx; }
+.tourist-row:first-of-type { border-top: none; }
+.log-row { display: flex; gap: 14rpx; padding: 10rpx 0; }
+.log-dot { width: 14rpx; height: 14rpx; border-radius: 50%; background: #1f6feb; margin-top: 12rpx; flex-shrink: 0; }
+.log-body { flex: 1; font-size: 26rpx; }
+.actions { display: flex; gap: 16rpx; }
+.actions .btn { flex: 1; }

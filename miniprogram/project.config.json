@@ -1,0 +1,23 @@
+{
+  "description": "旅游数字化平台 - 微信小程序（游客端/导游端/景区端）",
+  "packOptions": { "ignore": [] },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "useCompilerModule": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "3.5.0",
+  "appid": "touristappid",
+  "projectname": "travel-miniprogram",
+  "condition": {}
+}

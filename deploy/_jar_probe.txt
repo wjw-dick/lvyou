@@ -1,0 +1,16 @@
+﻿== APP_DIR ==
+总用量 16
+drwxr-xr-x  3 root root   75 10月 25 19:29 .
+drwxr-xr-x 19 root root 4096 10月 25 19:25 ..
+drwxr-xr-x  2 www  www    74 10月 25 19:25 admin
+-rw-r--r--  1 root root    5 10月 25 19:29 app.pid
+-rwxr-xr-x  1 root root 1290 10月 25 19:29 start_travel.sh
+-rw-r--r--  1 root root   78 10月 25 19:29 travel.log
+== jar file 类型 ==
+/home/app/travel.jxdg.net/travel-platform.jar: cannot open (No such file or directory)
+== 磁盘 ==
+文件系统                 容量  已用  可用 已用% 挂载点
+/dev/mapper/centos-home  1.7T  284G  1.4T   18% /home
+== 直连 java -jar 试跑(前5秒) ==
+Error: Unable to access jarfile travel-platform.jar
+== DONE ==

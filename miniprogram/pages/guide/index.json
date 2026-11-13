@@ -1,0 +1,4 @@
+{
+  "navigationBarTitleText": "导游端",
+  "usingComponents": { "tp-input": "/components/tp-input/index" }
+}

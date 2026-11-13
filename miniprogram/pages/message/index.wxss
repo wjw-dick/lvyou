@@ -1,0 +1,3 @@
+.msg-title { font-size: 30rpx; font-weight: 600; }
+.msg-content { margin-top: 8rpx; }
+.mt8 { margin-top: 12rpx; }

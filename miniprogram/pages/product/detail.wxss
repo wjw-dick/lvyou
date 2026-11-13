@@ -1,0 +1,18 @@
+.cover { height: 360rpx; background: linear-gradient(135deg, #dbeafe, #93c5fd); color: #1f6feb; display: flex; align-items: center; justify-content: center; font-size: 70rpx; }
+.mt { margin-top: 20rpx; }
+.mt8 { margin-top: 12rpx; }
+.sched-scroll { white-space: nowrap; }
+.sched { display: inline-block; width: 210rpx; padding: 16rpx; margin-right: 14rpx; border: 1rpx solid #dcdfe6; border-radius: 14rpx; background: #fff; }
+.sched.active { border-color: #1f6feb; background: #e8f1ff; }
+.sched.disabled { opacity: 0.4; }
+.sched-date { font-size: 28rpx; font-weight: 600; }
+.sched-left { font-size: 22rpx; color: #909399; }
+.day { display: flex; gap: 16rpx; padding: 16rpx 0; border-top: 1rpx dashed #ebeef5; }
+.day-badge { width: 76rpx; height: 48rpx; border-radius: 10rpx; background: #e8f1ff; color: #1f6feb; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+.day-body { flex: 1; }
+.day-title { font-weight: 600; }
+.day-content { font-size: 24rpx; color: #606266; margin-top: 6rpx; }
+.pre { white-space: pre-wrap; color: #606266; font-size: 26rpx; }
+.bottom-bar { position: fixed; left: 0; right: 0; bottom: 0; background: #fff; padding: 16rpx 24rpx calc(16rpx + env(safe-area-inset-bottom)); display: flex; align-items: center; gap: 20rpx; box-shadow: 0 -2rpx 16rpx rgba(0,0,0,0.05); }
+.bottom-bar .price { flex: 1; font-size: 34rpx; }
+.bottom-bar .btn { width: 300rpx; }

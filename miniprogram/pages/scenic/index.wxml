@@ -1,0 +1,66 @@
+<view class="tabs">
+  <view class="tab {{tab === 'verify' ? 'active' : ''}}" data-tab="verify" bindtap="switchTab">扫码验票</view>
+  <view class="tab {{tab === 'traffic' ? 'active' : ''}}" data-tab="traffic" bindtap="switchTab">实时客流</view>
+  <view class="tab {{tab === 'records' ? 'active' : ''}}" data-tab="records" bindtap="switchTab">验票记录</view>
+</view>
+
+<view class="container">
+  <block wx:if="{{tab === 'verify'}}">
+    <view class="card">
+      <view class="muted">{{me.scenicName}} · {{me.name}} · {{me.gate}}</view>
+      <view class="field mt8">
+        <view class="field-label">门票二维码 / 票号</view>
+        <tp-input value="{{code}}" placeholder="扫码或手动输入" bindinput="onCode" />
+      </view>
+      <view class="field">
+        <view class="field-label">闸口</view>
+        <picker range="{{gates}}" bindchange="onGate">
+          <view class="tp-input">{{gate}}</view>
+        </picker>
+      </view>
+      <view class="grid-2">
+        <button class="btn" bindtap="scan">扫码</button>
+        <button class="btn primary" loading="{{verifying}}" bindtap="verify">确认验票</button>
+      </view>
+    </view>
+
+    <view wx:if="{{result}}" class="card result {{result.ok ? 'ok' : 'fail'}}">
+      <view class="result-title">{{result.title}}</view>
+      <view class="muted">{{result.sub}}</view>
+    </view>
+
+    <view class="card">
+      <view class="section-title">公告</view>
+      <view wx:for="{{notices}}" wx:key="*this" class="notice">· {{item}}</view>
+    </view>
+  </block>
+
+  <block wx:if="{{tab === 'traffic'}}">
+    <view class="stat-grid">
+      <view class="card stat"><text class="muted">今日入园</text><text class="num">{{traffic.inCount || 0}}</text></view>
+      <view class="card stat"><text class="muted">拥堵预警</text><text class="num warn">{{traffic.congestionAlerts || 0}}</text></view>
+    </view>
+    <view class="card">
+      <view class="section-title">区域流量</view>
+      <view wx:for="{{traffic.areas}}" wx:key="name" class="area-row">
+        <text>{{item.name}}</text>
+        <text>{{item.inCount}} / {{item.capacity}}</text>
+        <text class="tag {{item.congested ? 'danger' : ''}}">{{item.congested ? '拥堵' : '正常'}}</text>
+      </view>
+      <view wx:if="{{!traffic.areas.length}}" class="empty">暂无区域数据</view>
+    </view>
+  </block>
+
+  <block wx:if="{{tab === 'records'}}">
+    <view wx:for="{{records}}" wx:key="id" class="card record">
+      <view class="flex-between">
+        <text>{{item.gate}}</text>
+        <text class="tag">成功</text>
+      </view>
+      <view class="muted">{{item.code}}</view>
+      <view class="muted">{{item.operatorName}} · {{item.verifyAt}}</view>
+    </view>
+    <view wx:if="{{!records.length}}" class="empty">暂无验票记录</view>
+  </block>
+</view>
+<view class="safe-bottom" />

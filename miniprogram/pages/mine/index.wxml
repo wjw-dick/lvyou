@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="card user-card" bindtap="{{user.id ? '' : 'goLogin'}}">
+    <view class="avatar">{{user.realName ? user.realName[0] : '游'}}</view>
+    <view class="info">
+      <view class="name">{{user.realName || '点击登录'}}</view>
+      <view class="muted">{{user.username || '微信 UnionID 登录，多端互通'}}</view>
+      <view class="tag mt8">{{roleMap[role]}}</view>
+    </view>
+  </view>
+
+  <view class="card menu">
+    <view class="menu-item" bindtap="goOrders"><text>我的订单</text><text class="muted">查看/核销/退改 ></text></view>
+    <view class="menu-item" bindtap="goMember"><text>会员中心</text><text class="muted">积分/优惠券/等级 ></text></view>
+    <view class="menu-item" bindtap="goMessages"><text>消息中心</text><text class="muted">出团/退款通知 ></text></view>
+  </view>
+
+  <view class="card menu">
+    <view class="menu-item" bindtap="goGuide"><text>导游端</text><text class="muted">带团/点名/报账 ></text></view>
+    <view class="menu-item" bindtap="goScenic"><text>景区验票端</text><text class="muted">扫码验票/客流 ></text></view>
+    <view class="menu-item" bindtap="switchLang"><text>语言</text><text class="muted">{{lang}} ></text></view>
+  </view>
+
+  <view class="card menu">
+    <view class="menu-item" bindtap="goAgreement" data-type="user"><text>用户协议</text><text class="muted">></text></view>
+    <view class="menu-item" bindtap="goAgreement" data-type="privacy"><text>隐私协议</text><text class="muted">></text></view>
+    <view class="menu-item"><text>客服电话</text><text class="muted">400-800-1234</text></view>
+  </view>
+
+  <button wx:if="{{user.id}}" class="btn block" bindtap="doLogout">退出登录</button>
+  <view class="safe-bottom" />
+</view>

@@ -1,0 +1,54 @@
+<view class="container">
+  <view class="card member-head">
+    <view class="avatar">{{profile.member.nickname[0] || '游'}}</view>
+    <view class="info">
+      <view class="name">{{profile.member.nickname || '游客'}}</view>
+      <view class="muted">UnionID：{{profile.member.unionId || '-'}}</view>
+      <view class="chips">
+        <text class="tag">L{{profile.member.level || 1}}</text>
+        <text class="tag">积分 {{profile.member.points || 0}}</text>
+        <text class="tag">消费 ¥{{profile.member.totalConsume || 0}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="quick">
+    <view class="quick-item" bindtap="goOrders"><text class="quick-num">{{profile.orders.length || 0}}</text><text class="muted">我的订单</text></view>
+    <view class="quick-item" bindtap="goMessages"><text class="quick-num">消息</text><text class="muted">出团/退款通知</text></view>
+    <view class="quick-item" bindtap="switchTab" data-tab="points"><text class="quick-num">{{profile.member.points || 0}}</text><text class="muted">积分</text></view>
+  </view>
+
+  <view class="tabs">
+    <view class="tab {{tab === 'coupons' ? 'active' : ''}}" data-tab="coupons" bindtap="switchTab">优惠券</view>
+    <view class="tab {{tab === 'points' ? 'active' : ''}}" data-tab="points" bindtap="switchTab">积分流水</view>
+    <view class="tab {{tab === 'cards' ? 'active' : ''}}" data-tab="cards" bindtap="switchTab">会员卡</view>
+  </view>
+
+  <block wx:if="{{tab === 'coupons'}}">
+    <view wx:for="{{coupons}}" wx:key="id" class="card coupon {{item.status !== 0 ? 'used' : ''}}">
+      <view class="flex-between"><text class="coupon-name">{{item.name}}</text><text class="price">¥{{item.amount}}</text></view>
+      <view class="muted">满 ¥{{item.minAmount}} 可用 · {{item.status === 0 ? '未使用' : '已使用'}}</view>
+    </view>
+    <view wx:if="{{!coupons.length}}" class="empty">暂无优惠券</view>
+  </block>
+
+  <block wx:if="{{tab === 'points'}}">
+    <view wx:for="{{points}}" wx:key="id" class="card point-row">
+      <view>
+        <view>{{bizMap[item.type] || item.type}}</view>
+        <view class="muted">{{item.remark}}</view>
+      </view>
+      <text class="{{item.points > 0 ? 'plus' : 'minus'}}">{{item.points > 0 ? '+' : ''}}{{item.points}}</text>
+    </view>
+    <view wx:if="{{!points.length}}" class="empty">暂无积分流水</view>
+  </block>
+
+  <block wx:if="{{tab === 'cards'}}">
+    <view wx:for="{{profile.cards}}" wx:key="id" class="card card-item">
+      <view class="flex-between"><text>{{item.cardNo}}</text><text class="tag">{{item.type === 'stored' ? '储值卡' : '年卡'}}</text></view>
+      <view class="muted">余额 ¥{{item.balance}} · 到期 {{item.validEnd || '长期'}}</view>
+    </view>
+    <view wx:if="{{!profile.cards.length}}" class="empty">暂无会员卡</view>
+  </block>
+</view>
+<view class="safe-bottom" />

@@ -1,0 +1,80 @@
+server:
+  port: ${BACKEND_PORT:8080}
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: travel-platform
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local}
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DB_HOST:127.0.0.1}:${MYSQL_PORT:3306}/${DB_NAME:travel}?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: ${DB_USER:travel}
+    password: ${DB_PASSWORD:travel}
+    hikari:
+      maximum-pool-size: 20
+      connection-timeout: 30000
+  data:
+    redis:
+      host: ${REDIS_HOST:127.0.0.1}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      timeout: 5000ms
+      lettuce:
+        pool:
+          max-active: 200
+          max-idle: 50
+          min-idle: 5
+  rabbitmq:
+    host: ${RABBIT_HOST:127.0.0.1}
+    port: ${RABBIT_PORT:5672}
+    username: ${RABBIT_USER:guest}
+    password: ${RABBIT_PASSWORD:guest}
+    listener:
+      simple:
+        acknowledge-mode: manual
+        retry:
+          enabled: true
+          max-attempts: 3
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 120MB
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    default-property-inclusion: non_null
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:please-change-this-jwt-secret-at-least-32-chars}
+    expire-minutes: 720
+  storage:
+    local-dir: ${STORAGE_LOCAL_DIR:./data/upload}
+    public-prefix: ${STORAGE_PUBLIC_PREFIX:/upload}
+  wechat:
+    mock: ${WECHAT_MOCK:true}
+  security:
+    aes-key: ${AES_KEY:travel-platform-aes-key-32chars!}
+  backup:
+    dir: ${BACKUP_DIR:./data/backup}
+
+logging:
+  level:
+    net.jxdg.travel: info
+    org.springframework.security: warn

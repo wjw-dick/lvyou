@@ -1,0 +1,107 @@
+<view class="tabs">
+  <view class="tab {{tab === 'schedules' ? 'active' : ''}}" data-tab="schedules" bindtap="switchTab">带团行程</view>
+  <view class="tab {{tab === 'expense' ? 'active' : ''}}" data-tab="expense" bindtap="switchTab">回团报账</view>
+  <view class="tab {{tab === 'cash' ? 'active' : ''}}" data-tab="cash" bindtap="switchTab">现金领款</view>
+</view>
+
+<view class="container">
+  <block wx:if="{{tab === 'schedules'}}">
+    <view wx:for="{{schedules}}" wx:key="scheduleId" class="card {{selected.scheduleId === item.scheduleId ? 'selected' : ''}}"
+          data-id="{{item.scheduleId}}" bindtap="selectSchedule">
+      <view class="flex-between">
+        <text class="s-title">{{item.productTitle}}</text>
+        <text class="tag">{{item.status === 2 ? '已成团' : item.status === 3 ? '已满' : '收客中'}}</text>
+      </view>
+      <view class="muted">{{item.scheduleNo}} · {{item.departDate}}</view>
+      <view class="muted">集合：{{item.meetingPoint}} {{item.meetingTime}} · 收客 {{item.sold}}</view>
+    </view>
+    <view wx:if="{{!schedules.length}}" class="empty">暂无带团安排</view>
+
+    <block wx:if="{{selected}}">
+      <view class="card">
+        <view class="flex-between">
+          <text class="section-title">游客名单</text>
+          <button class="btn small" bindtap="rollcall">客人点名</button>
+        </view>
+        <view wx:for="{{tourists}}" wx:key="touristId" class="tourist-row">
+          <view>
+            <view>{{item.name}} <text class="muted">{{item.isAdult ? '成人' : '儿童'}}</text></view>
+            <view class="muted">{{item.idNoMask}} · {{item.phoneMask}}</view>
+          </view>
+          <text class="tag">{{item.verifyStatus === 1 ? '已核销' : '未核销'}}</text>
+        </view>
+        <view wx:if="{{!tourists.length}}" class="empty">暂无游客</view>
+      </view>
+
+      <view class="card">
+        <view class="section-title">团报汇总</view>
+        <view class="flex-between"><text>订单数</text><text>{{report.orderCount || 0}}</text></view>
+        <view class="flex-between"><text>报账金额</text><text class="price">¥{{report.expenseAmount || 0}}</text></view>
+        <view class="flex-between"><text>现金领款</text><text>¥{{report.cashAmount || 0}}</text></view>
+        <view class="flex-between"><text>结余</text><text class="{{report.balance >= 0 ? 'plus' : 'minus'}}">¥{{report.balance || 0}}</text></view>
+      </view>
+
+      <view class="card">
+        <view class="section-title">供应商直拨</view>
+        <view wx:for="{{suppliers}}" wx:key="id" class="supplier-row" data-phone="{{item.phone}}" bindtap="call">
+          <view><text>{{item.name}}</text><text class="muted"> · {{item.type}}</text></view>
+          <text class="phone">拨打 {{item.phone}}</text>
+        </view>
+      </view>
+    </block>
+  </block>
+
+  <block wx:if="{{tab === 'expense'}}">
+    <view class="card">
+      <view class="section-title">提交报账</view>
+      <view class="field">
+        <view class="field-label">出团计划</view>
+        <picker range="{{schedules}}" range-key="productTitle" bindchange="onPickSchedule">
+          <view class="tp-input">{{selected ? selected.productTitle : '请选择出团计划'}}</view>
+        </picker>
+      </view>
+      <view class="field">
+        <view class="field-label">费用类型</view>
+        <picker range="{{expTypes}}" range-key="label" bindchange="selectType">
+          <view class="tp-input">{{expense.type === 'ticket' ? '门票' : expense.type === 'meal' ? '餐费' : '其他消费'}}</view>
+        </picker>
+      </view>
+      <view class="field">
+        <view class="field-label">金额</view>
+        <tp-input type="digit" value="{{expense.amount}}" placeholder="0.00" data-field="amount" bindinput="onExpense" />
+      </view>
+      <view class="field">
+        <view class="field-label">说明</view>
+        <tp-input textarea value="{{expense.remark}}" placeholder="费用说明" data-field="remark" bindinput="onExpense" />
+      </view>
+      <button class="btn" bindtap="chooseReceipt">上传单据照片</button>
+      <view wx:if="{{expense.receiptImages}}" class="muted mt8">{{expense.receiptImages}}</view>
+      <button class="btn primary block mt8" bindtap="submitExpense">提交报账</button>
+    </view>
+    <view class="card" wx:for="{{expenses}}" wx:key="id">
+      <view class="flex-between"><text>{{item.type}} · ¥{{item.amount}}</text><text class="tag">{{item.status === 1 ? '已通过' : item.status === 2 ? '已驳回' : '待审核'}}</text></view>
+      <view class="muted">{{item.remark}}</view>
+    </view>
+  </block>
+
+  <block wx:if="{{tab === 'cash'}}">
+    <view class="card">
+      <view class="section-title">现金领款申请</view>
+      <view class="field">
+        <view class="field-label">金额</view>
+        <tp-input type="digit" value="{{cashForm.amount}}" placeholder="0.00" data-field="amount" bindinput="onCash" />
+      </view>
+      <view class="field">
+        <view class="field-label">说明</view>
+        <tp-input value="{{cashForm.remark}}" placeholder="用途说明" data-field="remark" bindinput="onCash" />
+      </view>
+      <button class="btn primary block" bindtap="requestCash">提交申请</button>
+    </view>
+    <view class="card" wx:for="{{cash}}" wx:key="id">
+      <view class="flex-between"><text>现金领款</text><text class="price">¥{{item.amount}}</text></view>
+      <view class="muted">状态：{{item.status === 1 ? '已发放' : '待发放'}}</view>
+    </view>
+    <view wx:if="{{!cash.length}}" class="empty">暂无领款记录</view>
+  </block>
+</view>
+<view class="safe-bottom" />

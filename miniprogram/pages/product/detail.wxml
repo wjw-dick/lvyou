@@ -1,0 +1,62 @@
+<view wx:if="{{product}}">
+  <view class="cover" bindtap="previewImage">{{product.title[0]}}{{product.title[1]}}</view>
+  <view class="container">
+    <view class="card">
+      <view class="title">{{product.title}}</view>
+      <view class="subtitle">{{product.subtitle}}</view>
+      <view class="row mt8">
+        <view class="price">¥{{product.adultPrice}}<text class="small"> 起/人</text></view>
+        <view class="spacer" />
+        <view class="tag">{{product.days}}天</view>
+      </view>
+      <view class="muted mt8">儿童 ¥{{product.childPrice}} · 单房差 ¥{{product.singleRoomDiff}} · 余位 {{product.stock - product.sold}}</view>
+      <view class="muted">集合地点：{{product.meetingPoint}} · {{product.departure}}出发 / {{product.destination}}</view>
+    </view>
+
+    <view class="card">
+      <view class="section-title">选择团期</view>
+      <scroll-view scroll-x class="sched-scroll">
+        <view wx:for="{{schedules}}" wx:key="id"
+              class="sched {{scheduleId === item.id ? 'active' : ''}} {{item.left <= 0 ? 'disabled' : ''}}"
+              data-id="{{item.id}}" bindtap="selectSchedule">
+          <view class="sched-date">{{item.departDate}}</view>
+          <view class="sched-left">余位 {{item.left}}</view>
+        </view>
+      </scroll-view>
+      <view wx:if="{{!schedules.length}}" class="empty">暂无可预订团期</view>
+    </view>
+
+    <view class="card">
+      <view class="section-title">行程安排</view>
+      <view wx:for="{{itineraries}}" wx:key="id" class="day">
+        <view class="day-badge">D{{item.dayNo}}</view>
+        <view class="day-body">
+          <view class="day-title">{{item.title}}</view>
+          <view class="muted">{{item.spots}} · {{item.hotel || '住宿另定'}} · {{item.meals || ''}}</view>
+          <view wx:if="{{item.content}}" class="day-content">{{item.content}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="section-title">费用包含</view>
+      <view class="pre">{{product.includeText || '-'}}</view>
+      <view class="section-title mt">费用不含</view>
+      <view class="pre">{{product.excludeText || '-'}}</view>
+      <view class="section-title mt">退改规则</view>
+      <view class="pre">{{product.refundRule || '按合同约定'}}</view>
+    </view>
+
+    <view class="card" wx:if="{{product.guideContent}}">
+      <view class="section-title">图文详情</view>
+      <rich-text nodes="{{product.guideContent}}" />
+    </view>
+  </view>
+
+  <view class="bottom-bar">
+    <view class="price">¥{{product.adultPrice}}<text class="small"> 起/人</text></view>
+    <button class="btn primary" bindtap="book">立即预订</button>
+  </view>
+  <view class="safe-bottom" />
+</view>
+<view wx:else class="empty">加载中...</view>

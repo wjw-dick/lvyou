@@ -1,0 +1,4 @@
+{
+  "navigationBarTitleText": "景区验票端",
+  "usingComponents": { "tp-input": "/components/tp-input/index" }
+}

@@ -1,0 +1,3 @@
+﻿启动 travel 后端 (JDK17, port=18086)...
+PID=4105
+启动命令已执行，日志: /home/app/travel.jxdg.net/travel.log

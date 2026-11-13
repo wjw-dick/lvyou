@@ -1,0 +1,10 @@
+﻿KEYS:
+DBS:
+/www/server/panel/data/bt_hids.db
+/www/server/panel/data/default.db
+/www/server/panel/data/docker.db
+/www/server/panel/data/msg_box.db
+/www/server/panel/data/plugin_total.db
+/www/server/panel/data/system.db
+CONFIGPY:
+API_CFG:

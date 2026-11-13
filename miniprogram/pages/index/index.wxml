@@ -1,0 +1,47 @@
+<view class="hero">
+  <view class="hero-title">{{tenant.name || '雪乡国旅'}}</view>
+  <view class="hero-sub">冰雪季 · 雪乡 / 哈尔滨 · 纯玩无购物</view>
+  <view class="search-row">
+    <tp-input value="{{keyword}}" placeholder="搜索线路 / 目的地" bindinput="onKeyword" />
+    <button class="btn primary small" bindtap="onSearch">搜索</button>
+  </view>
+</view>
+
+<view class="container">
+  <view class="flex-between">
+    <view class="section-title">热门目的地</view>
+    <view class="muted" bindtap="goProducts">全部线路 ></view>
+  </view>
+  <scroll-view scroll-x class="dest-scroll">
+    <view wx:for="{{destinations}}" wx:key="id" class="dest-item" bindtap="goDestination" data-name="{{item.name}}">
+      <view class="dest-cover">{{item.name[0]}}</view>
+      <view class="dest-name">{{item.name}}</view>
+      <view class="muted">{{item.city || ''}}</view>
+    </view>
+  </scroll-view>
+
+  <view class="section-title">热门线路</view>
+  <view wx:for="{{products}}" wx:key="id" class="card product" bindtap="goDetail" data-id="{{item.id}}">
+    <view class="product-cover">{{item.title[0]}}{{item.title[1]}}</view>
+    <view class="product-body">
+      <view class="product-title">{{item.title}}</view>
+      <view class="muted">{{item.destination}} · {{item.days}} 天 · 余位 {{item.stock - item.sold}}</view>
+      <view class="flex-between mt8">
+        <view class="price">¥{{item.adultPrice}}<text class="small"> 起/人</text></view>
+        <view class="tag">立即预订</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{!products.length && !loading}}" class="empty">暂无在售线路</view>
+
+  <view class="section-title">公告与资讯</view>
+  <view class="card" wx:if="{{notices.length}}">
+    <view wx:for="{{notices}}" wx:key="id" class="notice-row">
+      <text class="tag">公告</text>
+      <text class="notice-title">{{item.title}}</text>
+    </view>
+  </view>
+  <view wx:else class="empty">暂无公告</view>
+</view>
+
+<view class="safe-bottom" />

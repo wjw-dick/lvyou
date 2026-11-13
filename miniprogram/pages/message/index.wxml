@@ -1,0 +1,12 @@
+<view class="container">
+  <view wx:for="{{messages}}" wx:key="id" class="card">
+    <view class="flex-between">
+      <text class="msg-title">{{bizMap[item.bizType] || item.bizType}}</text>
+      <text class="muted">{{item.createdAt}}</text>
+    </view>
+    <view class="muted msg-content">{{item.content}}</view>
+    <view class="tag mt8">{{item.status === 1 ? '已送达' : '发送中'}}</view>
+  </view>
+  <view wx:if="{{!messages.length}}" class="empty">暂无消息</view>
+</view>
+<view class="safe-bottom" />

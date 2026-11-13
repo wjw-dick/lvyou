@@ -1,0 +1,14 @@
+﻿== nginx -t ==
+nginx: the configuration file /www/server/nginx/nginx/conf/nginx.conf syntax is ok
+nginx: configuration file /www/server/nginx/nginx/conf/nginx.conf test is successful
+RC_T=0
+== reload ==
+RC_R=0
+== conf 列表 ==
+-rw-r--r--   1 root root 1548 10月 25 19:28 travel-admin.jxdg.net.conf
+-rw-r--r--   1 root root 2628 10月 25 19:25 travel-admin.jxdg.net.conf.panel.bak
+-rw-r--r--   1 root root 1505 10月 25 19:28 travel.jxdg.net.conf
+-rw-r--r--   1 root root 2594 10月 25 07:11 travel.jxdg.net.conf.bak.1792883514
+-rw-r--r--   1 root root 1787 10月 25 07:14 travel.jxdg.net.conf.bak.1792883641
+-rw-r--r--   1 root root 2594 10月 25 19:25 travel.jxdg.net.conf.panel.bak
+== DONE ==

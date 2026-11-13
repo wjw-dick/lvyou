@@ -1,0 +1,5 @@
+﻿A1
+A2
+localhost.localdomain
+/usr/bin/python3
+Python 3.6.8

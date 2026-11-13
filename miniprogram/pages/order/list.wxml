@@ -1,0 +1,21 @@
+<view class="tabs">
+  <view wx:for="{{tabs}}" wx:key="label" class="tab {{status === item.value ? 'active' : ''}}"
+        data-value="{{item.value}}" bindtap="changeTab">{{item.label}}</view>
+</view>
+
+<view class="container">
+  <view wx:for="{{orders}}" wx:key="id" class="card order" bindtap="goDetail" data-id="{{item.id}}">
+    <view class="flex-between">
+      <text class="order-title">{{item.productTitle}}</text>
+      <text class="tag">{{statusMap[item.status]}}</text>
+    </view>
+    <view class="muted">{{item.orderNo}}</view>
+    <view class="muted">{{item.departDate}} · {{item.adultCount}}大{{item.childCount}}小</view>
+    <view class="flex-between mt8">
+      <text class="price">¥{{item.paidAmount || item.totalAmount}}</text>
+      <button wx:if="{{item.payStatus === 0}}" class="btn primary small" catchtap="pay" data-id="{{item.id}}">去支付</button>
+    </view>
+  </view>
+  <view wx:if="{{!orders.length && !loading}}" class="empty">暂无订单</view>
+</view>
+<view class="safe-bottom" />

@@ -1,0 +1,55 @@
+﻿== 门户目录现状 ==
+总用量 20
+drwxr-xr-x  2 www  www    74 10月 25 19:25 .
+drwxr-xr-x 31 www  www  4096 10月 25 19:25 ..
+-rwxr-xr-x  1 www  www   138 10月 25 19:25 404.html
+-rwxr-xr-x  1 www  www     1 10月 25 19:25 .htaccess
+-rwxr-xr-x  1 www  www   917 10月 25 19:25 index.html
+-rw-r--r--  1 root root   53 10月 25 19:25 .user.ini
+== 上传前 /tmp jar ==
+-rw-r--r-- 1 root root 96M 10月 25 19:32 /tmp/travel-platform.jar
+== 落位 ==
+总用量 97916
+drwxr-xr-x  3 www  www        102 10月 25 19:32 .
+drwxr-xr-x 19 root root      4096 10月 25 19:25 ..
+drwxr-xr-x  2 www  www         74 10月 25 19:25 admin
+-rw-r--r--  1 root root         5 10月 25 19:29 app.pid
+-rwxr-xr-x  1 root root      1290 10月 25 19:29 start_travel.sh
+-rw-r--r--  1 root root        78 10月 25 19:29 travel.log
+-rwxr-xr-x  1 www  www  100248897 10月 25 19:32 travel-platform.jar
+== 启动 ==
+启动 travel 后端 (JDK17, port=18086)...
+PID=11233
+启动命令已执行，日志: /home/app/travel.jxdg.net/travel.log
+== 等待40s ==
+== 端口 ==
+LISTEN     0      100       [::]:18086                 [::]:*                   users:(("java",pid=11233,fd=9))
+== 健康 ==
+{"status":"UP"}
+== 日志尾部 ==
+2026-10-25T19:33:02.221+08:00  INFO 11233 --- [travel-platform] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-10-25T19:33:02.279+08:00  INFO 11233 --- [travel-platform] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 0 Redis repository interfaces.
+2026-10-25T19:33:04.358+08:00  INFO 11233 --- [travel-platform] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 18086 (http)
+2026-10-25T19:33:04.378+08:00  INFO 11233 --- [travel-platform] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-25T19:33:04.379+08:00  INFO 11233 --- [travel-platform] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-10-25T19:33:04.440+08:00  INFO 11233 --- [travel-platform] [           main] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2026-10-25T19:33:04.442+08:00  INFO 11233 --- [travel-platform] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4515 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+2026-10-25T19:33:11.580+08:00  WARN 11233 --- [travel-platform] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: de155ac8-2cb5-46ad-97c9-1a1982d099ee
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-10-25T19:33:12.863+08:00  INFO 11233 --- [travel-platform] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-10-25T19:33:14.033+08:00  INFO 11233 --- [travel-platform] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 18086 (http) with context path '/api'
+2026-10-25T19:33:14.065+08:00  INFO 11233 --- [travel-platform] [           main] net.jxdg.travel.TravelApplication        : Started TravelApplication in 15.284 seconds (process running for 16.815)
+2026-10-25T19:33:36.520+08:00  INFO 11233 --- [travel-platform] [io-18086-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-25T19:33:36.521+08:00  INFO 11233 --- [travel-platform] [io-18086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-25T19:33:36.524+08:00  INFO 11233 --- [travel-platform] [io-18086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-10-25T19:33:36.648+08:00  INFO 11233 --- [travel-platform] [io-18086-exec-1] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [172.16.28.201:5672]
+2026-10-25T19:33:36.761+08:00  INFO 11233 --- [travel-platform] [io-18086-exec-1] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#7f839ec5:0/SimpleConnection@40ed84dd [delegate=amqp://aicadmin@172.16.28.201:5672/, localPort=35470]
+2026-10-25T19:33:36.803+08:00  INFO 11233 --- [travel-platform] [io-18086-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-25T19:33:37.107+08:00  INFO 11233 --- [travel-platform] [io-18086-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7a9f9385
+2026-10-25T19:33:37.113+08:00  INFO 11233 --- [travel-platform] [io-18086-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+== DONE ==

@@ -1,0 +1,16 @@
+﻿== 1. portal 主页 (Host travel.jxdg.net) ==
+code=200
+<title>雪乡国旅 · 旅游数字化平台</title>
+== 2. admin 主页 (Host travel-admin.jxdg.net) ==
+code=200
+<title>旅游数字化平台 · 管理后台</title>
+== 3. API 反代 (Host travel.jxdg.net /api/actuator/health) ==
+{"status":"UP"}
+code=200
+== 4. API 反代 (Host travel-admin.jxdg.net /api/actuator/health) ==
+{"status":"UP"}
+code=200
+== 5. 后端直连 18086 ==
+{"status":"UP"}
+code=200
+== DONE ==

@@ -1,0 +1,10 @@
+﻿== 端口 18086 ==
+NOT_LISTENING
+== 进程 ==
+== 健康接口直连 ==
+http=000
+FAIL
+
+== 日志尾部 ==
+Error: Unable to access jarfile /home/app/travel.jxdg.net/travel-platform.jar
+== DONE ==

@@ -1,0 +1,34 @@
+<view class="field">
+  <textarea
+    wx:if="{{textarea}}"
+    class="tp-input tp-textarea {{focused ? 'focus' : ''}} {{error ? 'error' : ''}} {{disabled ? 'disabled' : ''}}"
+    value="{{value}}"
+    placeholder="{{placeholder}}"
+    placeholder-class="tp-placeholder"
+    maxlength="{{maxlength}}"
+    disabled="{{disabled}}"
+    auto-height
+    adjust-position
+    cursor-spacing="120"
+    bindinput="onInput"
+    bindfocus="onFocus"
+    bindblur="onBlur"
+  />
+  <input
+    wx:else
+    class="tp-input {{focused ? 'focus' : ''}} {{error ? 'error' : ''}} {{disabled ? 'disabled' : ''}}"
+    value="{{value}}"
+    type="{{type}}"
+    password="{{password}}"
+    placeholder="{{placeholder}}"
+    placeholder-class="tp-placeholder"
+    maxlength="{{maxlength}}"
+    disabled="{{disabled}}"
+    adjust-position
+    cursor-spacing="120"
+    bindinput="onInput"
+    bindfocus="onFocus"
+    bindblur="onBlur"
+  />
+  <view wx:if="{{error}}" class="field-error">{{error}}</view>
+</view>

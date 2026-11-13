@@ -1,0 +1,23 @@
+<view class="container">
+  <view class="card" wx:if="{{type === 'user'}}">
+    <view class="title">用户协议</view>
+    <view class="body">
+      <view>一、服务内容：本平台为游客提供旅游线路浏览、预订、支付、订单管理、电子合同签署等服务。</view>
+      <view>二、实名制：游客应提供真实、准确的实名信息，用于景区预约、保险投保与合同签署。</view>
+      <view>三、退改规则：以线路详情页与电子合同约定为准；出团后不可退。</view>
+      <view>四、用户行为：不得发布违法违规内容，UGC 内容经敏感词过滤与人工审核。</view>
+      <view>五、争议处理：优先协商，协商不成可向平台客服或旅游主管部门投诉。</view>
+    </view>
+  </view>
+  <view class="card" wx:else>
+    <view class="title">隐私协议</view>
+    <view class="body">
+      <view>一、收集范围：昵称、UnionID、手机号、游客姓名、证件号（实名制/保险/合同）。</view>
+      <view>二、存储方式：证件号、手机号等敏感字段 AES 加密存储，页面展示脱敏。</view>
+      <view>三、使用目的：订单履约、景区预约、电子合同、保险投保、售后与通知。</view>
+      <view>四、共享限制：除履约必要（景区/供应商/保险/合同系统）外不向第三方提供。</view>
+      <view>五、用户权利：可查询、更正、删除个人信息，或注销账号。</view>
+    </view>
+  </view>
+</view>
+<view class="safe-bottom" />

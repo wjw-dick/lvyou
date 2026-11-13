@@ -1,0 +1,48 @@
+<view class="container" wx:if="{{order}}">
+  <view class="card status-card">
+    <view class="status">{{statusMap[order.status]}}</view>
+    <view class="muted">订单号 {{order.orderNo}}</view>
+    <view class="muted">{{order.productTitle}} · {{order.departDate}}</view>
+  </view>
+
+  <view class="card verify-card">
+    <view class="flex-between">
+      <text class="section-title">核销凭证</text>
+      <text class="tag">{{order.verifyStatus === 1 ? '已核销' : '未核销'}}</text>
+    </view>
+    <view class="qr-box" bindtap="copyCode">
+      <view class="qr-lines">
+        <view wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:key="*this" class="qr-line" style="width: {{60 + (item * 17) % 100}}%"></view>
+      </view>
+      <view class="qr-code">{{order.orderNo}}</view>
+      <view class="muted">点击复制，门店/导游扫码核销</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">游客名单</view>
+    <view wx:for="{{tourists}}" wx:key="id" class="tourist-row">
+      <text>{{item.name}}</text>
+      <text class="muted">{{item.idNoMask}}</text>
+      <text class="tag">{{item.verifyStatus === 1 ? '已核销' : '未核销'}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">状态轨迹</view>
+    <view wx:for="{{logs}}" wx:key="id" class="log-row">
+      <view class="log-dot" />
+      <view class="log-body">
+        <view>{{item.action}}</view>
+        <view class="muted">{{item.remark}} · {{item.createdAt}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="actions">
+    <button wx:if="{{order.payStatus === 0}}" class="btn primary" bindtap="pay">去支付</button>
+    <button wx:if="{{order.payStatus === 1}}" class="btn" bindtap="refund">申请退改</button>
+    <button class="btn" bindtap="contract">电子合同</button>
+  </view>
+  <view class="safe-bottom" />
+</view>

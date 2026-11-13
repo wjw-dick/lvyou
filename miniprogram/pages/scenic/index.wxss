@@ -1,0 +1,15 @@
+.tabs { display: flex; background: #fff; padding: 16rpx 24rpx; gap: 12rpx; }
+.tab { flex: 1; text-align: center; padding: 14rpx 0; border-radius: 12rpx; background: #f5f7fa; color: #606266; font-size: 26rpx; }
+.tab.active { background: #1f6feb; color: #fff; }
+.mt8 { margin-top: 12rpx; }
+.result.ok { background: #f0f9eb; border-left: 8rpx solid #67c23a; }
+.result.fail { background: #fef0f0; border-left: 8rpx solid #f56c6c; }
+.result-title { font-size: 36rpx; font-weight: 700; margin-bottom: 6rpx; }
+.notice { font-size: 26rpx; color: #606266; padding: 8rpx 0; }
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16rpx; }
+.stat { display: flex; flex-direction: column; gap: 8rpx; }
+.num { font-size: 48rpx; font-weight: 700; color: #1f6feb; }
+.num.warn { color: #f56c6c; }
+.area-row { display: flex; justify-content: space-between; align-items: center; padding: 16rpx 0; border-top: 1rpx dashed #ebeef5; font-size: 26rpx; }
+.tag.danger { background: #fef0f0; color: #f56c6c; }
+.record { padding: 18rpx 24rpx; }

@@ -1,0 +1,10 @@
+.search-bar { display: flex; gap: 16rpx; align-items: center; margin-bottom: 20rpx; }
+.search-bar tp-input { flex: 1; }
+.filter-row { display: flex; gap: 12rpx; overflow-x: auto; margin-bottom: 20rpx; white-space: nowrap; }
+.filter { padding: 8rpx 24rpx; border-radius: 999rpx; background: #fff; color: #606266; font-size: 26rpx; border: 1rpx solid #e4e7ed; }
+.filter.active { background: #1f6feb; color: #fff; border-color: #1f6feb; }
+.product { display: flex; gap: 20rpx; }
+.product-cover { width: 190rpx; height: 160rpx; border-radius: 14rpx; background: linear-gradient(135deg, #dbeafe, #93c5fd); color: #1f6feb; display: flex; align-items: center; justify-content: center; font-size: 34rpx; flex-shrink: 0; }
+.product-body { flex: 1; }
+.product-title { font-size: 30rpx; font-weight: 600; margin-bottom: 6rpx; }
+.mt8 { margin-top: 12rpx; }

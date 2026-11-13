@@ -1,0 +1,7 @@
+﻿ssh : API_SK_NOT_FOUND
+所在位置 行:4 字符: 1
++ ssh -p 40122 -o StrictHostKeyChecking=no root@172.16.28.248 "cd /tmp  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (API_SK_NOT_FOUND:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

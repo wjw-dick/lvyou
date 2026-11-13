@@ -1,0 +1,53 @@
+<view class="container" wx:if="{{product}}">
+  <view class="card">
+    <view class="title">{{product.title}}</view>
+    <view class="muted">{{product.departure}}出发 · {{product.days}}天</view>
+    <view class="price mt8">¥{{product.adultPrice}}<text class="small"> /成人</text> · 儿童 ¥{{product.childPrice}}</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">出行人数</view>
+    <view class="grid-2">
+      <view class="field">
+        <view class="field-label">成人</view>
+        <tp-input type="number" value="{{adultCount}}" bindinput="onAdult" />
+      </view>
+      <view class="field">
+        <view class="field-label">儿童</view>
+        <tp-input type="number" value="{{childCount}}" bindinput="onChild" />
+      </view>
+    </view>
+    <view class="field">
+      <view class="field-label">联系人</view>
+      <tp-input value="{{contactName}}" placeholder="请输入姓名" data-field="contactName" bindinput="onContact" />
+    </view>
+    <view class="field">
+      <view class="field-label">手机号</view>
+      <tp-input type="number" value="{{contactPhone}}" placeholder="用于接收藏出团通知" data-field="contactPhone" bindinput="onContact" />
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">游客实名信息（加密存储）</view>
+    <view wx:for="{{tourists}}" wx:key="index" class="tourist">
+      <view class="tourist-head">
+        <text class="tag">{{item.isAdult ? '成人' : '儿童'}}</text>
+        <text class="muted">游客 {{index + 1}}</text>
+      </view>
+      <tp-input value="{{item.name}}" placeholder="姓名" data-idx="{{index}}" data-field="name" bindinput="onTourist" />
+      <view class="mt8" />
+      <tp-input value="{{item.idNo}}" placeholder="身份证号 / 护照号" data-idx="{{index}}" data-field="idNo" bindinput="onTourist" />
+    </view>
+  </view>
+
+  <view class="card total-card">
+    <view class="flex-between">
+      <text>合计</text>
+      <text class="price">¥{{total}}</text>
+    </view>
+    <view class="muted">提交即表示同意《旅游合同》与实名制出行要求</view>
+  </view>
+
+  <button class="btn primary block" loading="{{submitting}}" bindtap="submit">提交预订</button>
+  <view class="safe-bottom" />
+</view>

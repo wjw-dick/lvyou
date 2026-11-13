@@ -1,0 +1,40 @@
+﻿== /tmp dist 副本 ==
+assets
+index.html
+assets
+index.html
+== 重新落位 portal ==
+ssh : rm: 无法删除"/home/www/wwwroot/travel.jxdg.net/.user.ini": 不允许的操作
+所在位置 行:4 字符: 1
++ ssh -p 40122 -o StrictHostKeyChecking=no root@172.16.28.248 "bash /tm ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (rm: 无法删除"/home/...er.ini": 不允许的操作:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+== 重新落位 admin ==
+chown: 正在更改"/home/www/wwwroot/travel.jxdg.net/.user.ini" 的所有者: 不允许的操作
+chown: 正在更改"/home/app/travel.jxdg.net/admin/.user.ini" 的所有者: 不允许的操作
+chmod: 更改"/home/www/wwwroot/travel.jxdg.net/.user.ini" 的权限: 不允许的操作
+chmod: 更改"/home/app/travel.jxdg.net/admin/.user.ini" 的权限: 不允许的操作
+== 校验 portal ==
+assets index.html 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>雪乡国旅 · 旅游数字化平台</title>
+
+== 校验 admin ==
+assets index.html 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>旅游数字化平台 · 管理后台</title>
+
+== 权限 ==
+/home/www/wwwroot/travel.jxdg.net www:www 755
+/home/app/travel.jxdg.net/admin www:www 755
+== DONE ==

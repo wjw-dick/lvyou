@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="search-bar">
+    <tp-input value="{{keyword}}" placeholder="搜索线路 / 目的地" bindinput="onKeyword" />
+    <button class="btn primary small" bindtap="load">搜索</button>
+  </view>
+
+  <view class="filter-row">
+    <view class="filter {{days === '' ? 'active' : ''}}" data-days="" bindtap="onDays">全部</view>
+    <view wx:for="{{[1,2,3,5,7]}}" wx:key="*this" class="filter {{days == item ? 'active' : ''}}" data-days="{{item}}" bindtap="onDays">{{item}}天</view>
+  </view>
+
+  <view wx:for="{{products}}" wx:key="id" class="card product" bindtap="goDetail" data-id="{{item.id}}">
+    <view class="product-cover">{{item.title[0]}}{{item.title[1]}}</view>
+    <view class="product-body">
+      <view class="product-title">{{item.title}}</view>
+      <view class="muted">{{item.subtitle || item.destination}}</view>
+      <view class="muted">{{item.days}}天 · {{item.departure}}出发 · 余位{{item.stock - item.sold}}</view>
+      <view class="flex-between mt8">
+        <view class="price">¥{{item.adultPrice}}<text class="small"> 起/人</text></view>
+        <view class="tag">查看详情</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{!products.length && !loading}}" class="empty">没有符合条件的线路</view>
+</view>
+<view class="safe-bottom" />

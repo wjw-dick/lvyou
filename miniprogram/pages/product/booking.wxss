@@ -1,0 +1,5 @@
+.mt8 { margin-top: 12rpx; }
+.tourist { padding: 20rpx 0; border-top: 1rpx dashed #ebeef5; }
+.tourist:first-child { border-top: none; }
+.tourist-head { display: flex; gap: 12rpx; align-items: center; margin-bottom: 12rpx; }
+.total-card .price { font-size: 40rpx; }

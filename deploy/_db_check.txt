@@ -1,0 +1,24 @@
+﻿== travel 表数量 ==
+91
+== travel 表列表(前20) ==
+biz_activity
+biz_ai_conversation
+biz_approval
+biz_commission
+biz_contract
+biz_contract_template
+biz_coupon
+biz_currency_rate
+biz_custom_quote
+biz_custom_request
+biz_destination
+biz_distributor
+biz_distributor_price
+biz_guarantee_fund
+biz_guide
+biz_guide_assignment
+biz_guide_audio
+biz_guide_cash
+biz_guide_expense
+biz_hotel_room
+== DONE ==

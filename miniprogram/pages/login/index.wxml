@@ -1,0 +1,56 @@
+<view class="container">
+  <view class="head">
+    <view class="logo">旅</view>
+    <view class="title">旅游数字化平台</view>
+    <view class="muted">UnionID 多端互通 · 仅本人数据可见</view>
+  </view>
+
+  <view class="tabs">
+    <view class="tab {{tab === 'member' ? 'active' : ''}}" data-tab="member" bindtap="switchTab">游客</view>
+    <view class="tab {{tab === 'guide' ? 'active' : ''}}" data-tab="guide" bindtap="switchTab">导游</view>
+    <view class="tab {{tab === 'scenic' ? 'active' : ''}}" data-tab="scenic" bindtap="switchTab">景区员工</view>
+  </view>
+
+  <view class="card">
+    <view class="field">
+      <view class="field-label">租户编码</view>
+      <tp-input value="{{tenantCode}}" data-field="tenantCode" bindinput="onInput" />
+    </view>
+
+    <block wx:if="{{tab === 'member'}}">
+      <view class="field">
+        <view class="field-label">昵称</view>
+        <tp-input value="{{nickname}}" data-field="nickname" bindinput="onInput" />
+      </view>
+      <button class="btn primary block" loading="{{loading}}" bindtap="memberLogin">微信一键登录</button>
+      <view class="muted tip">将调用 wx.login → code2Session → UnionID 绑定会员档案</view>
+    </block>
+
+    <block wx:if="{{tab === 'guide'}}">
+      <view class="field">
+        <view class="field-label">UnionID（可选）</view>
+        <tp-input value="{{unionId}}" placeholder="绑定导游档案的 UnionID" data-field="unionId" bindinput="onInput" />
+      </view>
+      <view class="field">
+        <view class="field-label">手机号（可选）</view>
+        <tp-input value="{{phone}}" placeholder="导游档案手机号" data-field="phone" bindinput="onInput" />
+      </view>
+      <button class="btn primary block" loading="{{loading}}" bindtap="guideLogin">导游登录</button>
+      <view class="muted tip">演示：手机号 13800000006</view>
+    </block>
+
+    <block wx:if="{{tab === 'scenic'}}">
+      <view class="field">
+        <view class="field-label">账号</view>
+        <tp-input value="{{username}}" data-field="username" bindinput="onInput" />
+      </view>
+      <view class="field">
+        <view class="field-label">密码</view>
+        <tp-input value="{{password}}" password data-field="password" bindinput="onInput" />
+      </view>
+      <button class="btn primary block" loading="{{loading}}" bindtap="scenicLogin">员工登录</button>
+      <view class="muted tip">演示：scenic01 / admin123</view>
+    </block>
+  </view>
+</view>
+<view class="safe-bottom" />
